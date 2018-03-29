@@ -4,6 +4,10 @@
 # node
 node_modules
 
+# bsb
+lib
+.merlin
+
 # vscode
 .vscode
 
