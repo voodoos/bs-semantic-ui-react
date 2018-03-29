@@ -1,0 +1,17 @@
+{
+    "name": "bs-semantic-ui-react",
+    "version": "0.1.0",
+    "description": "Bucklescript bindings for Semantic UI React",
+    "license": "MIT",
+    "repository": {
+	"type": "git",
+	"url": "https://github.com/voodoos/bs-semantic-ui-react"
+    },
+    "dependencies": {
+	"semantic-ui-react": "^0.79.0"
+    },
+    "devDependencies": {
+	"bs-platform": "^2.2.3",
+	"reason-react": ">=0.3.4"
+    }
+}

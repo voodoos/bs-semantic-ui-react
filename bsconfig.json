@@ -1,0 +1,17 @@
+{
+  "name": "bs-semantic-ui-react",
+  "sources": {
+    "dir" : "src",
+    "subdirs" : false
+  },
+  "bs-dependencies": [
+    "reason-react"
+  ],
+  "reason": {
+    "react-jsx": 2
+  },
+  "bsc-flags": [
+    "-bs-super-errors"
+  ],
+  "refmt": 3
+}
