@@ -11,7 +11,13 @@ The method I used to create these bindings is well documented in [this blog post
 
 
 ## Installation
-TODO
+To use these bindings in an existing ReasonReact project simply add the repository to your dependencies :
+
+```
+yarn add "https://github.com/voodoos/bs-semantic-ui-react"
+```
+
+And ask `bsb` to use it by adding `bs-semantic-ui-react` to `bs-dependencies` in your `bsconfig.json`.
 
 ## Contributions
 
@@ -19,4 +25,4 @@ All contributions are welcomed.
 
 ## LICENSE
 
-MIT
+MIT (see LICENSE file for more details)
