@@ -8,7 +8,7 @@
         "react",
         "bindings",
         "ui",
-        "semanticui"
+        "semantic-ui"
     ],
     "homepage": "https://github.com/voodoos/bs-semantic-ui-react",
     "repository": {
