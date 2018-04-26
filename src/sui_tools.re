@@ -57,6 +57,15 @@ let toNumOrStringAux = bORe =>
 
 let fromNumOrString = b => Js.Option.map((. a) => toNumOrStringAux(a), b);
 
+let fromBoolOrStringAux = bORe =>
+  switch (bORe) {
+  | `Bool(b) => jsOfBool(Js.Boolean.to_js_boolean(b))
+  | `String(s) => jsOfString(s)
+  };
+
+let fromBoolOrString = b =>
+  Js.Option.map((. a) => fromBoolOrStringAux(a), b);
+
 let fromNumAux = bORe =>
   switch (bORe) {
   | `Int(i) => jsOfInt(i)
@@ -73,3 +82,29 @@ let fromBoolOrVeryAux = bORe =>
   };
 
 let fromBoolOrVery = b => Js.Option.map((. a) => fromBoolOrVeryAux(a), b);
+
+let fromBoolOrCenteredAux = bORe =>
+  switch (bORe) {
+  | `True => jsOfBool(Js.true_)
+  | `False => jsOfBool(Js.true_)
+  | `Centered => jsOfString("centered")
+  };
+
+let fromBoolOrCentered = b =>
+  Js.Option.map((. a) => fromBoolOrCenteredAux(a), b);
+
+let fromEqualAux = a =>
+  switch (a) {
+  | `equal => jsOfString("equal")
+  };
+
+let fromEqual = b => Js.Option.map((. a) => fromEqualAux(a), b);
+
+let fromComponentOrStringAux = a =>
+  switch (a) {
+  | `Comp(r) => r
+  | `String(s) => jsOfString(s)
+  };
+
+let fromComponentOrString = b =>
+  Js.Option.map((. a) => fromComponentOrStringAux(a), b);
