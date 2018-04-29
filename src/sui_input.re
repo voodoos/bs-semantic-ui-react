@@ -6,7 +6,7 @@ external sui : ReasonReact.reactClass = "Input";
 [@bs.obj] /* TODO : Action, ActionPosition */
 external makeProps :
   (
-    ~as_: string=? /* TODO: Can also be a function ! */,
+    ~_as: string=? /* TODO: Can also be a function ! */,
     ~autoComplete: string=?,
     ~className: string=?,
     ~disabled: Js.boolean=?,
@@ -14,7 +14,9 @@ external makeProps :
     ~fluid: Js.boolean=?,
     ~focus: Js.boolean=?,
     ~icon: js=? /* TODO : input */ /* TODO : iconPosition */ /* fromBoolOrString */,
-    ~inverted: Js.boolean=? /* TODO : ~labelPosition: string=?, */ /* TODO: label: label {custom} Add a Label by text, props object, or pass a <Label />. */,
+    ~inverted: Js.boolean=? /* TODO: label: label {custom} Add a Label by text, props object, or pass a <Label />. */,
+    ~label: ReasonReact.reactElement=?,
+    ~labelPosition: string=?,
     ~loading: Js.boolean=?,
     ~onChange: ReactEventRe.Form.t => unit=?,
     ~size: string=?,
@@ -32,7 +34,7 @@ external makeProps :
 
 let make =
     (
-      ~as_=?,
+      ~_as=?,
       ~autoComplete=?,
       ~className=?,
       ~disabled=?,
@@ -40,7 +42,9 @@ let make =
       ~fluid=?,
       ~focus=?,
       ~icon=?,
-      ~inverted=? /*~labelPosition=?,*/,
+      ~inverted=?,
+      ~label=?,
+      ~labelPosition=?,
       ~loading=?,
       ~onChange=?,
       ~size=?,
@@ -57,7 +61,7 @@ let make =
     ~reactClass=sui,
     ~props=
       makeProps(
-        ~as_?,
+        ~_as?,
         ~autoComplete?,
         ~className?,
         ~disabled=?fromBool(disabled),
@@ -65,7 +69,9 @@ let make =
         ~focus=?fromBool(focus),
         ~fluid=?fromBool(fluid),
         ~icon=?fromBoolOrString(icon),
-        ~inverted=?fromBool(inverted) /* ~labelPosition=?fromLeftOrRightOrLeftCornerOrRightCorner(labelPosition), */,
+        ~inverted=?fromBool(inverted),
+        ~label?,
+        ~labelPosition=?fromLabelPos(labelPosition),
         ~loading=?fromBool(loading),
         ~onChange?,
         ~size=?fromSize(size),

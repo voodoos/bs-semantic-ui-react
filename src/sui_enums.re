@@ -37,6 +37,9 @@ type size = [
 ];
 
 [@bs.deriving jsConverter]
+type sizeHeader = [ | `tiny | `small | `medium | `large | `huge];
+
+[@bs.deriving jsConverter]
 type sizePopup = [ | `mini | `tiny | `small | `large | `huge];
 
 [@bs.deriving jsConverter]
@@ -52,6 +55,14 @@ type pos = [
   | [@bs.as "left center"] `leftcenter
   | [@bs.as "top center"] `topcenter
   | [@bs.as "bottom center"] `bottomcenter
+];
+
+[@bs.deriving jsConverter]
+type labelPos = [
+  | [@bs.as "left"] `left
+  | [@bs.as "right"] `right
+  | [@bs.as "right corner"] `rightcorner
+  | [@bs.as "left corner"] `leftcorner
 ];
 
 [@bs.deriving jsConverter]
