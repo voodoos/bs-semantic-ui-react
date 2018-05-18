@@ -1,5 +1,10 @@
 /* Module as namespace */
-/* https://react.semantic-ui.com/ */
+/** These are partial bindings for SemanticUi react
+ *  Contributions are welcomed !
+ */
+/* Docs: https://react.semantic-ui.com/ */
+/* See https://khoanguyen.me/writing-reason-react-bindings-the-right-way */
+/* Using BS Special Creation Function help us with optionnal properties */
 module Enums = Sui_enums;
 
 module Tools = Sui_tools;
@@ -26,6 +31,8 @@ module Table = Sui_table;
 
 /* Modules */
 module Dimmer = Sui_dimmer;
+
+module Dropdown = Sui_dropdown;
 
 module Modal = Sui_modal;
 
