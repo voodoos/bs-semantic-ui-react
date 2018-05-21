@@ -1,13 +1,13 @@
 open Sui_tools;
 
 [@bs.module "semantic-ui-react"]
-external sui : ReasonReact.reactClass = "Dropdown";
+external react : ReasonReact.reactClass = "Dropdown";
 
 [@bs.obj]
 /* TODO: additionLabel, additionPosition, allowAdditions */
 external makeProps :
   (
-    ~_as: string=? /* TODO: Can also be a function ! */,
+    ~_as: js=?,
     ~basic: Js.boolean=?,
     ~button: Js.boolean=?,
     ~className: string=?,
@@ -61,7 +61,7 @@ external makeProps :
 
 let make =
     (
-      ~_as=? /* TODO: Can also be a function ! */,
+      ~_as=?,
       ~basic=?,
       ~button=?,
       ~className=?,
@@ -111,10 +111,10 @@ let make =
       children,
     ) =>
   ReasonReact.wrapJsForReason(
-    ~reactClass=sui,
+    ~reactClass=react,
     ~props=
       makeProps(
-        ~_as? /* TODO: Can also be a function ! */,
+        ~_as=?fromStringOrReactClass(_as),
         ~basic=?fromBool(basic),
         ~button=?fromBool(button),
         ~className?,
@@ -168,23 +168,23 @@ let make =
 
 module Divider = {
   [@bs.module "semantic-ui-react"] [@bs.scope "Dropdown"]
-  external sui : ReasonReact.reactClass = "Divider";
+  external react : ReasonReact.reactClass = "Divider";
   [@bs.obj]
-  external makeProps : (~_as: string=?, ~className: string=?, unit) => _ = "";
+  external makeProps : (~_as: js=?, ~className: string=?, unit) => _ = "";
   let make = (~_as=?, ~className=?) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass=sui,
-      ~props=makeProps(~_as?, ~className?, ()),
+      ~reactClass=react,
+      ~props=makeProps(~_as=?fromStringOrReactClass(_as), ~className?, ()),
     );
 };
 
 module Header = {
   [@bs.module "semantic-ui-react"] [@bs.scope "Dropdown"]
-  external sui : ReasonReact.reactClass = "Header";
+  external react : ReasonReact.reactClass = "Header";
   [@bs.obj]
   external makeProps :
     (
-      ~_as: string=?,
+      ~_as: js=?,
       ~className: string=?,
       ~content: ReasonReact.reactElement=?,
       ~icon: string=?,
@@ -194,20 +194,27 @@ module Header = {
     "";
   let make = (~_as=?, ~className=?, ~content=?, ~icon=?, children) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass=sui,
-      ~props=makeProps(~_as?, ~className?, ~content?, ~icon?, ()),
+      ~reactClass=react,
+      ~props=
+        makeProps(
+          ~_as=?fromStringOrReactClass(_as),
+          ~className?,
+          ~content?,
+          ~icon?,
+          (),
+        ),
       children,
     );
 };
 
 module Item = {
   [@bs.module "semantic-ui-react"] [@bs.scope "Dropdown"]
-  external sui : ReasonReact.reactClass = "Item";
+  external react : ReasonReact.reactClass = "Item";
   [@bs.obj]
   external makeProps :
     (
       ~active: Js.boolean=?,
-      ~_as: string=?,
+      ~_as: js=?,
       ~className: string=?,
       ~content: ReasonReact.reactElement=?,
       ~description: ReasonReact.reactElement=?,
@@ -237,11 +244,11 @@ module Item = {
         children,
       ) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass=sui,
+      ~reactClass=react,
       ~props=
         makeProps(
           ~active?,
-          ~_as?,
+          ~_as=?fromStringOrReactClass(_as),
           ~className?,
           ~content?,
           ~description?,
@@ -259,11 +266,11 @@ module Item = {
 
 module Menu = {
   [@bs.module "semantic-ui-react"] [@bs.scope "Dropdown"]
-  external sui : ReasonReact.reactClass = "Menu";
+  external react : ReasonReact.reactClass = "Menu";
   [@bs.obj]
   external makeProps :
     (
-      ~_as: string=?,
+      ~_as: js=?,
       ~className: string=?,
       ~content: ReasonReact.reactElement=?,
       ~direction: string=?,
@@ -284,10 +291,10 @@ module Menu = {
         children,
       ) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass=sui,
+      ~reactClass=react,
       ~props=
         makeProps(
-          ~_as?,
+          ~_as=?fromStringOrReactClass(_as),
           ~className?,
           ~content?,
           ~direction=?fromLeftOrRight(direction),
@@ -301,11 +308,11 @@ module Menu = {
 
 module SearchInput = {
   [@bs.module "semantic-ui-react"] [@bs.scope "Dropdown"]
-  external sui : ReasonReact.reactClass = "SearchInput";
+  external react : ReasonReact.reactClass = "SearchInput";
   [@bs.obj]
   external makeProps :
     (
-      ~_as: string=?,
+      ~_as: js=?,
       ~autoComplete: string=?,
       ~className: string=?, /* TODO: inputRef */
       ~tabIndex: int=?, /* Also string ? */
@@ -326,10 +333,10 @@ module SearchInput = {
         children,
       ) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass=sui,
+      ~reactClass=react,
       ~props=
         makeProps(
-          ~_as?,
+          ~_as=?fromStringOrReactClass(_as),
           ~autoComplete?,
           ~className?,
           ~tabIndex?,

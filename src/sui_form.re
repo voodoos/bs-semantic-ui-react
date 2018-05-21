@@ -1,13 +1,13 @@
 open Sui_tools;
 
 [@bs.module "semantic-ui-react"]
-external sui : ReasonReact.reactClass = "Form";
+external react : ReasonReact.reactClass = "Form";
 
 [@bs.obj]
 external makeProps :
   (
     ~action: string=?,
-    ~_as: string=?, /* TODO: Can also be a function ! */
+    ~_as: js=?,
     ~className: string=?,
     ~error: Js.boolean=?,
     ~inverted: Js.boolean=?,
@@ -43,11 +43,11 @@ let make =
       children,
     ) =>
   ReasonReact.wrapJsForReason(
-    ~reactClass=sui,
+    ~reactClass=react,
     ~props=
       makeProps(
         ~action?,
-        ~_as?,
+        ~_as=?fromStringOrReactClass(_as),
         ~className?,
         ~error=?fromBool(error),
         ~inverted=?fromBool(inverted),
@@ -66,11 +66,11 @@ let make =
 
 module Field = {
   [@bs.module "semantic-ui-react"] [@bs.scope "Form"]
-  external sui : ReasonReact.reactClass = "Field";
+  external react : ReasonReact.reactClass = "Field";
   [@bs.obj]
   external makeProps :
     (
-      ~_as: string=?, /* TODO: Can also be a function ! */
+      ~_as: js=?,
       ~className: string=?,
       ~content: ReasonReact.reactElement=?,
       ~control: ReasonReact.reactElement=?, /* TODO ? can also be a string ? */
@@ -101,10 +101,10 @@ module Field = {
         children,
       ) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass=sui,
+      ~reactClass=react,
       ~props=
         makeProps(
-          ~_as?,
+          ~_as=?fromStringOrReactClass(_as),
           ~className?,
           ~content?,
           ~control?,
@@ -123,11 +123,11 @@ module Field = {
 
 module Group = {
   [@bs.module "semantic-ui-react"] [@bs.scope "Form"]
-  external sui : ReasonReact.reactClass = "Group";
+  external react : ReasonReact.reactClass = "Group";
   [@bs.obj]
   external makeProps :
     (
-      ~_as: string=?, /* TODO: Can also be a function ! */
+      ~_as: js=?,
       ~className: string=?,
       /* TODO : grouped, inline */
       ~unstackable: Js.boolean=?,
@@ -138,10 +138,10 @@ module Group = {
     "";
   let make = (~_as=?, ~className=?, ~unstackable=?, ~widths=?, children) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass=sui,
+      ~reactClass=react,
       ~props=
         makeProps(
-          ~_as?,
+          ~_as=?fromStringOrReactClass(_as),
           ~className?,
           ~unstackable=?fromBool(unstackable),
           ~widths=?fromWidth(widths),
@@ -158,7 +158,7 @@ module Group = {
      [@bs.obj]
      external makeProps :
        (
-         ~_as: string=?, /* TODO: Can also be a function ! */
+         ~_as: string=?,
          ~control: ReasonReact.reactElement=?, /* TODO ? can also be a string ? */
          unit
        ) =>

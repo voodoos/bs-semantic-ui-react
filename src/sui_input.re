@@ -1,19 +1,19 @@
 open Sui_tools;
 
 [@bs.module "semantic-ui-react"]
-external sui : ReasonReact.reactClass = "Input";
+external react : ReasonReact.reactClass = "Input";
 
 [@bs.obj] /* TODO : Action, ActionPosition */
 external makeProps :
   (
-    ~_as: string=? /* TODO: Can also be a function ! */,
+    ~_as: js=?,
     ~autoComplete: string=?,
     ~className: string=?,
     ~disabled: Js.boolean=?,
     ~error: Js.boolean=?,
     ~fluid: Js.boolean=?,
     ~focus: Js.boolean=?,
-    ~icon: js=? /* fromBoolOrString */ /* TODO : iconPosition */ /* TODO : input */,
+    ~icon: js=? /* TODO : input */ /* TODO : iconPosition */ /* fromBoolOrString */,
     ~inverted: Js.boolean=? /* TODO: label: label {custom} Add a Label by text, props object, or pass a <Label />. */,
     ~label: ReasonReact.reactElement=?,
     ~labelPosition: string=?,
@@ -60,10 +60,10 @@ let make =
       children,
     ) =>
   ReasonReact.wrapJsForReason(
-    ~reactClass=sui,
+    ~reactClass=react,
     ~props=
       makeProps(
-        ~_as?,
+        ~_as=?fromStringOrReactClass(_as),
         ~autoComplete?,
         ~className?,
         ~disabled=?fromBool(disabled),

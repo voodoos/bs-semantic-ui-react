@@ -1,14 +1,14 @@
 open Sui_tools;
 
 [@bs.module "semantic-ui-react"]
-external suiTable : ReasonReact.reactClass = "Table";
+external react : ReasonReact.reactClass = "Table";
 
 /* Using BS Special Creation Function help us with optionnal properties */
 /* See https://khoanguyen.me/writing-reason-react-bindings-the-right-way */
 [@bs.obj]
 external makeTableProps :
   (
-    ~_as: string=?, /* TODO: Can also be a function ! */
+    ~_as: js=?,
     ~attached: string=?,
     ~basic: js=?,
     ~celled: Js.boolean=?,
@@ -67,10 +67,10 @@ let make =
       children,
     ) =>
   ReasonReact.wrapJsForReason(
-    ~reactClass=suiTable,
+    ~reactClass=react,
     ~props=
       makeTableProps(
-        ~_as?,
+        ~_as=?fromStringOrReactClass(_as),
         ~attached=?fromTopOrBottom(attached),
         ~basic=?fromBoolOrVery(basic),
         ~celled=?fromBool(celled),
@@ -100,32 +100,25 @@ let make =
 
 module Body = {
   [@bs.module "semantic-ui-react"] [@bs.scope "Table"]
-  external sui : ReasonReact.reactClass = "Body";
+  external react : ReasonReact.reactClass = "Body";
   [@bs.obj]
-  external makeProps :
-    (
-      ~_as: string=?, /* TODO: Can also be a function ! */
-      ~className: string=?,
-      unit
-    ) =>
-    _ =
-    "";
+  external makeProps : (~_as: js=?, ~className: string=?, unit) => _ = "";
   let make = (~_as=?, ~className=?, children) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass=sui,
-      ~props=makeProps(~_as?, ~className?, ()),
+      ~reactClass=react,
+      ~props=makeProps(~_as=?fromStringOrReactClass(_as), ~className?, ()),
       children,
     );
 };
 
 module Cell = {
   [@bs.module "semantic-ui-react"] [@bs.scope "Table"]
-  external sui : ReasonReact.reactClass = "Cell";
+  external react : ReasonReact.reactClass = "Cell";
   [@bs.obj]
   external makeProps :
     (
       ~active: Js.boolean=?,
-      ~_as: string=?, /* TODO: Can also be a function ! */
+      ~_as: js=?,
       /* TODO : cellAs, cells */
       ~className: string=?,
       ~collapsing: Js.boolean=?,
@@ -162,11 +155,11 @@ module Cell = {
         children,
       ) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass=sui,
+      ~reactClass=react,
       ~props=
         makeProps(
           ~active=?fromBool(active),
-          ~_as?,
+          ~_as=?fromStringOrReactClass(_as),
           ~className?,
           ~collapsing=?fromBool(collapsing),
           ~disabled=?fromBool(disabled),
@@ -186,12 +179,12 @@ module Cell = {
 
 module Row = {
   [@bs.module "semantic-ui-react"] [@bs.scope "Table"]
-  external sui : ReasonReact.reactClass = "Row";
+  external react : ReasonReact.reactClass = "Row";
   [@bs.obj]
   external makeProps :
     (
       ~active: Js.boolean=?,
-      ~_as: string=?, /* TODO: Can also be a function ! */
+      ~_as: js=?,
       /* TODO : cellAs, cells */
       ~className: string=?,
       ~disabled: Js.boolean=?,
@@ -222,11 +215,11 @@ module Row = {
         children,
       ) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass=sui,
+      ~reactClass=react,
       ~props=
         makeProps(
           ~active=?fromBool(active),
-          ~_as?,
+          ~_as=?fromStringOrReactClass(_as),
           ~className?,
           ~disabled=?fromBool(disabled),
           ~error=?fromBool(error),
