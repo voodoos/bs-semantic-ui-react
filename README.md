@@ -25,7 +25,7 @@ And ask `bsb` to use it by adding `bs-semantic-ui-react` to `bs-dependencies` in
 
 You will also need to load semantic-ui's css, here is one way to do it :
 
-```
+```reason
 [%bs.raw {|require('semantic-ui-css/semantic.min.css')|}];
 ```
 
