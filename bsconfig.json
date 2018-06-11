@@ -1,11 +1,19 @@
 {
   "name": "bs-semantic-ui-react",
-  "sources": {
-    "dir" : "src",
-    "subdirs" : false
-  },
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": false
+    },
+    {
+      "dir": "__tests__",
+      "type": "dev"
+    }
+  ],
   "bs-dependencies": [
-    "reason-react"
+    "reason-react",
+    "@glennsl/bs-jest",
+    "bs-react-test-renderer"
   ],
   "reason": {
     "react-jsx": 2
