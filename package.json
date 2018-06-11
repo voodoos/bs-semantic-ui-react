@@ -18,6 +18,9 @@
     "bugs": {
         "url": "https://github.com/voodoos/bs-semantic-ui-react/issues"
     },
+    "scripts": {
+        "install": "./node_modules/bs-platform/lib/bsb -make-world"
+    },
     "dependencies": {
         "semantic-ui-css": "^2.3.1",
         "semantic-ui-react": "^0.80.2"
