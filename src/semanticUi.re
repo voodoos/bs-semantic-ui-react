@@ -41,3 +41,5 @@ module Modal = Sui_modal;
 module Sidebar = Sui_sidebar;
 
 module Popup = Sui_popup;
+
+module Message = Sui_message;
